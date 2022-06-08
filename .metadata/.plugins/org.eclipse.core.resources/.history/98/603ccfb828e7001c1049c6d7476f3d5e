@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/nav.css">
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+</head>
+<body>
+<!--이미지 로고 -->
+<div>
+	<a href="#">
+	<img src="https://i.ibb.co/1G4LWbz/001.png" alt="001" border="0" class="log">
+	</a>
+</div>
+
+</body>
+</html>
