@@ -4,9 +4,9 @@
 <html>
 <head>
 <link rel="stylesheet" href="css/nav.css">
+
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-
 </head>
 <body>
 <!--이미지 로고 -->

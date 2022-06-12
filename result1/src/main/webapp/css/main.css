@@ -1,0 +1,36 @@
+*{
+	padding: 0;
+	margin: 0;
+	
+}
+body {
+	background-color: gray;
+}
+.haed{
+	height: 90px;
+	background-color: blue;
+	text-align: center;
+	color: white;
+}
+.nav{
+	height: 50px;
+	background-color: purple;
+}
+.nav a{
+	color: white;
+	text-decoration: none;
+	margin: 5px 0 0 10px;
+}
+.first{
+	text-align: center;
+	margin: 10px 0 10px 0;
+}
+.footer{
+	height: 70px;
+	color: white;
+	text-align: center;
+	background: blue;
+}
+section{
+	height: 500px;		
+}
