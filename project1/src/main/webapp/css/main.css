@@ -1,0 +1,29 @@
+.pic{
+	width: 1000px;
+	height:800px;
+	background-color: black;
+	margin: auto;
+	
+}
+.img{
+	background-color: red;
+	width: 200px;
+	height: 250px;
+	margin: 10px 10px 10px 10px;
+	float: left;
+
+}
+.picmain{
+	top: 500px;
+}
+.tiping{
+	color: white;
+	text-align: center;
+}
+.blank{
+	height: 50px;
+}
+.pic1{
+	width:1000px;
+	
+}

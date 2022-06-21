@@ -7,6 +7,8 @@
 	Connection conn=null;
 	PreparedStatement pstm=null;
 	ResultSet rs = null;
+	
+	
 	String url= "jdbc:mysql://localhost:3306/mydb?serverTimezone=UTC";
 	String id = "root";
 	String pwd="1234";
@@ -41,6 +43,7 @@
 		conn=DriverManager.getConnection(url,id,pwd);
 		pstm=conn.prepareStatement(sql);
 		rs=pstm.executeQuery();
+	
 		
 		while(rs.next()){
 			out.println("<tr>");
@@ -51,9 +54,9 @@
 			out.println("<td>"+rs.getString(5)+"</td>");
 			out.println("<td>"+rs.getString(6)+"</td>");
 			out.println("<td>"+rs.getString(7)+"</td>");
-			
 			out.println("</tr>");
 		}
+		
 	}catch(Exception e){
 		e.printStackTrace();
 	}finally{

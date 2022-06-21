@@ -32,6 +32,7 @@
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn=DriverManager.getConnection(url,id,pwd);
 		ptsm=conn.prepareStatement(sql);
+		
 		rs=ptsm.executeQuery();
 		while(rs.next()){
 			out.println("<tr>");
