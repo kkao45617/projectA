@@ -14,7 +14,7 @@ public class empolywrite implements empoly {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	employeesVO vo= new employeesVO();
-	String url="employ/emply.jsp";
+	
 	vo.setId(request.getParameter("id"));
 	vo.setPass(request.getParameter("pass"));
 	vo.setName(request.getParameter("name"));

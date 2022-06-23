@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -20,21 +22,36 @@ public class shoppingwrite2 implements shopping {
 		request.setCharacterEncoding("utf-8");
 		
 		//이미지 등록하는 곳
+		String savepath="/imge";
+		int sizelimit = 5*1024*1024;
+		String enctype="utf-8";
 		
 		
+		ServletContext context = request.getServletContext();
+		String path= context.getRealPath(savepath);
+		MultipartRequest multi = new MultipartRequest(request,path,sizelimit,enctype,new DefaultFileRenamePolicy());
+		
+	
+		String photourl= multi.getFilesystemName("photourl");
+		int price = Integer.parseInt(multi.getParameter("price"));
+		String title = multi.getParameter("title");
+		String explantion = multi.getParameter("explanation");
+		String link= multi.getParameter("link");
 		
 		//sql에 쏠 변수를 가져오는 곳
 		shoppingVO vo = new shoppingVO();
-		String url = "shopping/shoppingmain.jsp";
 		
-		vo.setPhotourl(request.getParameter("photourl"));
-		vo.setTitle(request.getParameter("title"));
-		vo.setPrice(Integer.parseInt(request.getParameter("price")));
-		vo.setExplanation(request.getParameter("explanation"));
+		vo.setPhotourl(photourl);
+		vo.setTitle(title);
+		vo.setPrice(price);
+		vo.setExplanation(explantion);
 		
 		
 		shoppingDAO dao = shoppingDAO.getinstance();
 		dao.insertshopping(vo);
+		
+		
+		
 		
 		new shoppinglist().excute(request, response);
 	}

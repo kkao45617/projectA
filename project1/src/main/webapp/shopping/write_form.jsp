@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="utf-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -11,7 +11,7 @@
 <!-- 네비게이션바 호출 -->
 
 
-<form action="shoppingservlet" method="post" name="frm">
+<form action="shoppingservlet" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="link" value="shopping_write">
 	
 	<div>
@@ -30,6 +30,7 @@
 	<div>
 		<h4>사진등록 : </h4>
 		<input type="file" name="photourl" value="사진등록">
+		
 		<br>
 		<br>
 	</div>

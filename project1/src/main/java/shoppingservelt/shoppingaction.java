@@ -16,7 +16,7 @@ public class shoppingaction {
 	
 	public shopping getshopping(String link) {
 		shopping shopping=null;
-		System.out.println("handeling : "+shopping);
+		System.out.println("handeling : "+link);
 		
 		if(link.equals("write_form")) {
 			shopping = new shoppingwrite();
