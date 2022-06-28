@@ -5,19 +5,24 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+</script>
 </head>
 <body>
 <h2>관리자 글쓰기 페이지</h2>
 <!-- 네비게이션바 호출 -->
 
 
-<form action="shoppingservlet" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="link" value="shopping_write">
+<form action="write.do" method="post" enctype="multipart/form-data">
 	
+	
+	<input type="hidden" name="link" value="shopping_write">
 	<div>
 		<h4>제품명 : </h4>
 		<input type="text" name="title">
 	</div>
+
 	<div>
 		<h4>금액 : </h4>
 		<input type="number" name="price">

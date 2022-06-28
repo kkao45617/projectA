@@ -1,9 +1,10 @@
 package controller;
-
+//이거는 안쓰기로
 import java.io.IOException;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,6 +30,7 @@ public class shoppingwrite2 implements shopping {
 		
 		ServletContext context = request.getServletContext();
 		String path= context.getRealPath(savepath);
+		
 		MultipartRequest multi = new MultipartRequest(request,path,sizelimit,enctype,new DefaultFileRenamePolicy());
 		
 	

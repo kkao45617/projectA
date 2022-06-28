@@ -16,6 +16,8 @@ public class shoppingDAO {
 	public static shoppingDAO getinstance() {
 		return instance;
 	}
+	
+	//상품 등록
 	public void insertshopping(shoppingVO vo) {
 		String sql = "insert into shopping values(null,?,?,?,?,now())";
 		Connection conn = null;
@@ -37,6 +39,8 @@ public class shoppingDAO {
 			dbmanager.closeconnection(conn, pstmt);
 		}
 	}
+	
+	//메인페이지 화면리스트
 	public List<shoppingVO> selectallempoly() {
 		List<shoppingVO> list = new ArrayList<shoppingVO>();
 		String sql ="select * from shopping";
@@ -59,6 +63,7 @@ public class shoppingDAO {
 				vo.setDate(rs.getTimestamp(6));
 				
 				list.add(vo);
+				
 			}	
 			
 			
@@ -70,7 +75,37 @@ public class shoppingDAO {
 		
 		
 		
-		return null;
+		return list;
+	}
+
+	public static shoppingVO selectview(int no) {
+		String sql = "select * from shopping where no=?";
+		Connection conn=null;
+		PreparedStatement pstmt= null;
+		ResultSet rs= null;
+		shoppingVO vo= new shoppingVO();
+		try {
+			conn = dbmanager.getconnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				vo.setNo(rs.getInt(1));
+				vo.setPhotourl(rs.getString(2));
+				vo.setTitle(rs.getString(3));
+				vo.setPrice(rs.getInt(4));
+				vo.setExplanation(rs.getString(5));
+				vo.setDate(rs.getTimestamp(6));
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbmanager.closeconnection(conn, pstmt, rs);
+		}
+		
+		return vo;
 	}
 	
 }

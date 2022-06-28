@@ -1,0 +1,57 @@
+package com.springbook.diz.board.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
+import com.springbook.biz.board.boardVO;
+import com.springbook.biz.board.boardservice;
+import com.springbook.diz.common.log4jadvice;
+import com.springbook.diz.common.logadvice;
+
+@Service("boardservice")
+public class boardservicimpl implements boardservice {
+	
+	@Autowired
+	private boardDAOspring boardDAO;
+
+	
+	
+	
+	@Override
+	public void insertboard(boardVO vo) {
+	/*	if(vo.getSeq()==0) {
+			throw new IllegalArgumentException("0踰� 湲��� �벑濡앺븷 �닔 �뾾�뒿�땲�떎.\n");
+		}*/
+		boardDAO.insertboard(vo);
+		boardDAO.insertboard(vo);
+	
+	}
+
+	@Override
+	public void updateboard(boardVO vo) {
+
+		boardDAO.updateboard(vo);
+	}
+
+	@Override
+	public void deleteboard(boardVO vo) {
+
+		boardDAO.deleteboard(vo);
+	}
+
+	@Override
+	public boardVO getboard(boardVO vo) {
+
+		return boardDAO.getboard(vo);
+	}
+
+	@Override
+	public List<boardVO> getboardlist(boardVO vo) {
+
+		return boardDAO.getboardlist(vo);
+	}
+
+}

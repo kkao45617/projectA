@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+<!-- 매개변수 이용하는 부분 -->
+<!--  
+<bean id="tv" class="polymorphism.SamsungTV">
+	 매개변수 <constructor-arg ref="apple"> </constructor-arg>
+		  	<constructor-arg value="4000000"></constructor-arg>
+	
+	set 이용<property name="speaker" ref="apple"></property>
+		   <property name="price" value="270000"/>
+</bean>
+-->
+<!-- 삼성티비 set 하는부분 -->
+<!--  
+<bean id="tv" class="polymorphism.SamsungTV" p:speaker-ref="sony" p:price="7000" />
+	
+<bean id="sony" class="polymorphism.SnoySpeaker"></bean>
+<bean id="apple" class="polymorphism.AppleSpeaker"> </bean>
+-->
+
+<bean id="collectionbean" class="com.springbook.ioc.injection.CollectionBean">
+	<!--  <property name="addressList">
+		<list>
+			<value>서울시 구리동 행복구</value>
+			<value>고백시 행복구 했으면</value>
+		</list>
+	</property>
+	-->
+	<property name="addressList">
+		<set value-type="java.lang.String">
+			<value>서울시 남서구 고백동</value>
+			<value>서울시 구리구 담파변</value>
+			<value>서울시 남서구 고백동</value>
+		</set>
+	</property>
+</bean>
+
+
+</beans>

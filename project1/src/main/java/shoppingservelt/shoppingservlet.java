@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 import controller.shopping;
 
 
@@ -17,6 +20,7 @@ public class shoppingservlet extends HttpServlet {
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String link = request.getParameter("link");
+		
 		System.out.println("ø‰√ªµ» link : "+link);
 		shoppingaction sm = shoppingaction.getinstance();
 		shopping shopping = sm.getshopping(link);
@@ -29,6 +33,7 @@ public class shoppingservlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		
 		doGet(request, response);
 	}
 

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+
+<!-- 
+		<context:component-scan base-package="com.springbook.diz"/>
+		
+		<bean id="log" class="com.springbook.diz.common.log4jadvice"></bean>
+		<bean id="afterreturning" class="com.springbook.diz.common.afterreturningadvice"></bean>
+		<bean id="exception" class="com.springbook.diz.common.afterthrowingadvice"></bean>
+		<bean id="around" class="com.springbook.diz.common.aroundadvice"></bean>
+		<bean id="before" class="com.springbook.diz.common.beforeadvice"></bean>
+		<bean id="after" class="com.springbook.diz.common.afterthrowingadvice"></bean>
+		
+		<aop:config>
+			<aop:pointcut expression="execution(* com.springbook.diz..*impl.get*(..))" id="allpointcut"/>
+			
+			<aop:aspect ref="before">
+				<aop:before pointcut-ref="allpointcut" method="printlog"/>
+			</aop:aspect>
+		</aop:config>
+		 -->
+		
+<!--  	 <bean id="collectionbean" class="com.springbook.ioc.indjection.collectionbean">
+	 	<property name="addresslist">
+	 		<list>
+	 			<value>서울시 경남구 역삼동</value>
+	 			<value>서울시 경남구 영구없동</value>
+	 		</list>
+	 	</property>
+	 	
+	 	<property name="addressSet">
+	 		<set value-type="java.lang.String">
+	 			<value>서울시 고백구 행복동</value>
+	 			<value>사랑시 이별동 슬픈시</value>
+	 			<value>사랑시</value>
+	 			<value>사랑시</value>
+	 		</set>
+	 	</property>
+	 	
+	 	<property name="addressMap">
+	 		<map>
+	 			<entry>
+	 				<key> <value>고길동</value> </key>
+	 				<value>서울시 고백구 행복동</value>
+	 			</entry>
+	 			<entry>
+	 				<key> <value>이재현</value> </key>
+	 				<value>서울시 강남구 종로동</value>
+	 			</entry>
+	 			<entry>
+	 				<key> <value>졸리다</value> </key>
+	 				<value>천국행 열차를 타는중</value>
+	 			</entry>
+	 			<entry key="마이클"  value="둘리랑 다같이 빙하타고"/>
+	 		</map>
+	 	</property>
+	 	
+	 	<property name="addproperties">
+	 		<props>
+	 			<prop key="고기랑">쌈이랑 무랑 당근이랑</prop>
+	 			<prop key="피자는">피클이랑 양바랑 참꺠빵</prop>
+	 		</props>
+	 	</property>
+	 </bean>-->
+</beans>

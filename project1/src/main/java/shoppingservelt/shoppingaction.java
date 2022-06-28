@@ -24,6 +24,8 @@ public class shoppingaction {
 			shopping = new shoppingwrite2();
 		}else if(link.equals("list")) {
 			shopping=new shoppinglist();
+		}else if(link.equals("view")) {
+			shopping=new shoppingview();
 		}
 		
 		
