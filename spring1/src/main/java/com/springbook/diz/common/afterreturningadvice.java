@@ -25,9 +25,9 @@ public class afterreturningadvice {
 		if(returnobj instanceof userVO) {
 			userVO user=(userVO) returnobj;
 			if(user.getRole().equals("admin")) {
-				System.out.println(user.getName()+" 濡쒓렇�씤 (admin)");
+				System.out.println(user.getName()+" 로그인 (admin)");
 			}
 		}
-		System.out.println("[�궗�썑泥섎━] "+method+"()硫붿냼�뱶 由ы꽩媛� : "+returnobj.toString());
+		System.out.println("[사후처리] "+method+"()메소드 리턴값 : "+returnobj.toString());
 	}
 }

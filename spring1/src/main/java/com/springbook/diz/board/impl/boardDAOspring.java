@@ -55,7 +55,6 @@ public class boardDAOspring {
 }
 class boardrowmapper implements RowMapper<boardVO>{
 
-	@Override
 	public boardVO mapRow(ResultSet rs, int rowNum) throws SQLException {
 		boardVO vo = new boardVO();
 		vo.setSeq(rs.getInt("seq"));

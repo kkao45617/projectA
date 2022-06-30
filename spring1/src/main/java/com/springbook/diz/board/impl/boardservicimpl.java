@@ -15,7 +15,7 @@ import com.springbook.diz.common.logadvice;
 public class boardservicimpl implements boardservice {
 	
 	@Autowired
-	private boardDAOspring boardDAO;
+	private boardDAO boardDAO;
 
 	
 	
@@ -23,11 +23,9 @@ public class boardservicimpl implements boardservice {
 	@Override
 	public void insertboard(boardVO vo) {
 	/*	if(vo.getSeq()==0) {
-			throw new IllegalArgumentException("0踰� 湲��� �벑濡앺븷 �닔 �뾾�뒿�땲�떎.\n");
+			throw new IllegalArgumentException("0번 글은 등록할 수 없습니다.\n");
 		}*/
 		boardDAO.insertboard(vo);
-		boardDAO.insertboard(vo);
-	
 	}
 
 	@Override

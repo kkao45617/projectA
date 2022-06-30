@@ -8,5 +8,5 @@ import lombok.Data;
 public class boardVO {
 	private int seq,cnt;
 	private String title, writer, content;
-	private Date regdate;
+	private Date regdate;	
 }

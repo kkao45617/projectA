@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<context:component-scan base-package="com.springbook.biz">
+	</context:component-scan>
+	
+	<context:property-placeholder location="classpath:config/database.properties" />
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+			destroy-method="close">
+			<property name="driverClassName" value="${jdbc.driver}"/>
+			<property name="url" value="${jdbc.url}"/>
+			<property name="username" value="${jdbc.username}"/>
+			<property name="password" value="${jdbc.password}"/>
+	</bean>
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:pointcut expression="execution(* com.springbook.biz..*(..))" id="txPointcut"/>
+		<aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice" />
+	</aop:config>
+</beans>
+
+<!-- <bean id="log" class="com.springbook.biz.common.Log4jAdvice"></bean>
+	<bean id="afterReturning" class="com.springbook.biz.common.AfterReturningAdvice"></bean>
+	<bean id="afterThrowing" class="com.springbook.biz.common.AfterThrowingAdvice"></bean>
+	<bean id="after" class="com.springbook.biz.common.AfterAdvice"></bean>
+	<bean id="around" class="com.springbook.biz.common.AroundAdvice"></bean>
+	<bean id="before" class="com.springbook.biz.common.BeforeAdvice"></bean>
+	
+	
+	<aop:config>
+		<aop:pointcut expression="execution(* com.springbook.biz..*Impl.*(..))" id="allPointcut"/>
+		
+		<aop:aspect ref="around">
+			<aop:around pointcut-ref="allPointcut" method="aroundLog"/>
+		</aop:aspect>
+		
+		<aop:aspect ref="after">
+			<aop:after pointcut-ref="allPointcut" method="finallyLog"/>
+		</aop:aspect>
+	</aop:config> -->
+
+
+
+<!-- <bean id="userService" class="com.springbook.biz.user.impl.UserServiceImpl">
+	<property name="userDAO" ref="userDAO"/>
+</bean>
+
+<bean id="userDAO" class="com.springbook.biz.user.impl.UserDAO"/> -->
+
+<!-- <context:component-scan base-package="polymorphism">
+	</context:component-scan> -->
+	
+	<!-- <bean id="CollectionBean" class="com.springbook.ioc.injection.CollectionBean">
+		<property name="addressList">
+			<list>
+				<value>서울시 강남구 역삼동</value>
+				<value>서울시 성동구 행당동</value>
+			</list>
+		</property>
+		
+		<property name="addressSet">
+			<set value-type="java.lang.String">
+				<value>서울시 강남구 역삼동</value>
+				<value>서울시 성동구 성수동</value>
+				<value>서울시 강서구 화곡동</value>
+			</set>
+		</property>
+		
+		<property name="addressMap">
+			<map>
+				<entry>
+					<key><value>고길동</value></key>
+					<value>서울시 강남구 역삼동</value>
+				</entry>
+				<entry>
+					<key><value>마이콜</value></key>
+					<value>서울시 강서구 화곡동</value>
+				</entry>
+			</map>
+		</property>
+		
+		<property name="addressProperties">
+			<props>
+				<prop key="고길동">서울시 강남구 역삼동</prop>
+				<prop key="마이콜">서울시 강서구 화곡동</prop>
+			</props>
+		</property>
+	</bean>
+ </beans> -->
+ 
+<!-- <bean id="TV1" class="polymorphism.SamsungTV"
+		p:speaker-ref="sony" p:price="27000000"/>
+		<property name="speaker" ref="apple"></property>
+		<property name="price" value="250000"></property>
+		<constructor-arg ref="apple"></constructor-arg>
+		<constructor-arg value="270000"></constructor-arg>
+	
+	<bean id="sony" class="polymorphism.SonySpeaker"/>
+	<bean id="apple" class="polymorphism.AppleSpeaker"/>
+	
+	
+<bean id="TV2" class="polymorphism.LgTV" lazy-init="true">
+	<constructor-arg ref="apple"></constructor-arg>
+	<constructor-arg value="500"></constructor-arg>
+</bean>
+ -->
