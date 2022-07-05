@@ -1,0 +1,12 @@
+@charset "EUC-KR";
+.view{
+	text-align: center;
+}
+table {
+    margin-left:auto; 
+    margin-right:auto;
+}
+.img{
+	height: 100px;
+	width: 100px;
+}

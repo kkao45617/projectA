@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+		
+			<props>
+				<prop key="/login.do">login</prop>
+				<prop key="/getboardlist.do">getboardlist</prop>
+				<prop key="/getboard.do">getboard</prop>
+				<prop key="/insertboard.do">insertboard</prop>
+				<prop key="/updateboard.do">updateboard</prop>
+				<prop key="/deleteboard.do">deleteboard</prop>
+				<prop key="/logout.do">logout</prop>
+			</props>
+		</property>
+</bean>
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/board/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	<bean id="login" class="com.springbook.view.user.logincontroller"></bean>
+	<bean id="getboardlist" class="com.springbook.view.board.getboardlistcontroller">  </bean>
+	<bean id="getboard" class="com.springbook.view.board.getboardcontroller" ></bean>
+	<bean id="insertboard" class="com.springbook.view.board.insertboardcontroller"></bean>
+	<bean id="updateboard" class="com.springbook.view.board.updateboardcontroller"></bean>
+	<bean id="deleteboard" class="com.springbook.view.board.deleteboardconteroller"></bean>
+	<bean id="logout" class="com.springbook.view.user.logincontroller"></bean>
+</beans>

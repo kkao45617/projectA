@@ -3,15 +3,19 @@ package com.springbook.view.board;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.springbook.biz.board.boardVO;
 import com.springbook.diz.board.impl.boardDAO;
-import com.springbook.view.controller.controller;
 
-public class insertboardcontroller implements controller{
+public class insertboardcontroller implements Controller{
+
+
 
 	@Override
-	public String handlerequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("±€µÓ∑œ √≥∏Æ");
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("Í∏Ä Îì±Î°ù Ï≤òÎ¶¨");
 		
 
 		String title=  request.getParameter("title");
@@ -26,7 +30,10 @@ public class insertboardcontroller implements controller{
 		vo.setContent(content);
 		
 		DAO.insertboard(vo);
-		return "getboardlist";
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:getboardlist.do");
+		return mav;
 	}
 
 }

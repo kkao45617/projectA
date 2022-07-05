@@ -6,39 +6,39 @@ import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.springbook.diz.user.userVO;
 import com.springbook.diz.user.impl.userDAO;
-import com.springbook.view.controller.controller;
 
-public class logincontroller implements controller{
+
+public class logincontroller implements Controller{
+
+	
 
 	@Override
-	public String handlerequest(HttpServletRequest request, HttpServletResponse response){
-		System.out.println("∑Œ±◊¿Œ √≥∏Æ");
-		
-
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("Î°úÍ∑∏Ïù∏ Ï≤òÎ¶¨");
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		userVO vo = new userVO();
 		
+		userVO vo = new userVO();
 		vo.setId(id);
 		vo.setPassword(password);
 		
 		userDAO DAO = new userDAO();
 		userVO user = DAO.getuser(vo);
 		
-		System.out.print(user);
-		if(user !=null){
-			
-			System.out.println("∑Œ±◊¿Œø° µÈæÓø‘¿Ω");
-			return "./getboardlist";
-			
+		ModelAndView mav = new ModelAndView();
+		if(user != null) {
+			mav.setViewName("redirect:getboardlist.do");
+			//mav.setViewName("getboardlist.do");
 		}else {
-			
-			System.out.print("æ»µÈø¿ø» µÈæÓø»");
-			return "old/login";
+			mav.setViewName("redirect:login.jsp");
 		}
-	
+		
+		return mav;
 	}
 }
 

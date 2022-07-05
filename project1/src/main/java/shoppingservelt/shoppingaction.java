@@ -2,6 +2,7 @@ package shoppingservelt;
 
 import controller.shopping;
 import controller.shoppinglist;
+import controller.shoppingview;
 import controller.shoppingwrite;
 import controller.shoppingwrite2;
 
@@ -26,6 +27,8 @@ public class shoppingaction {
 			shopping=new shoppinglist();
 		}else if(link.equals("view")) {
 			shopping=new shoppingview();
+		}else if(link.equals("delete")) {
+			shopping = new shoppingdelete();
 		}
 		
 		

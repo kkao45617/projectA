@@ -6,25 +6,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.springbook.biz.board.boardVO;
 import com.springbook.diz.board.impl.boardDAO;
-import com.springbook.view.controller.controller;
 
-public class getboardlistcontroller implements controller{
+public class getboardlistcontroller implements Controller{
+
+	
 
 	@Override
-	public String handlerequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("±€ ∏Ò∑œ ∞Àªˆ √≥∏Æ");
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("Í∏ÄÎ™©Î°ù Í≤ÄÏÉâ Ï≤òÎ¶¨");
 		
 		boardVO vo = new boardVO();
 		boardDAO dao = new boardDAO();
 		List<boardVO> boardlist = dao.getboardlist(vo);
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("boardlist", boardlist);
 		
+		//HttpSession session = request.getSession();
+		//session.setAttribute("boardlist", boardlist);
+		//return "old/getboardlist";
 		
-		return "old/getboardlist";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("boardlist",boardlist);
+		mav.setViewName("getboardlist");
+		
+		return mav;
 	}
 	
 }

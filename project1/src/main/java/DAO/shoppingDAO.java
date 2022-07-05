@@ -107,5 +107,21 @@ public class shoppingDAO {
 		
 		return vo;
 	}
+
+	public void delete(int no) {
+		String sql = "delete from shopping where no=?";
+		Connection conn= null;
+		PreparedStatement pstmt= null;
+		try {
+			conn = dbmanager.getconnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			dbmanager.closeconnection(conn, pstmt);
+		}
+	}
 	
 }

@@ -3,15 +3,18 @@ package com.springbook.view.board;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.springbook.biz.board.boardVO;
 import com.springbook.diz.board.impl.boardDAO;
-import com.springbook.view.controller.controller;
 
-public class deleteboardconteroller implements controller{
+
+public class deleteboardconteroller implements Controller{
 
 	@Override
-	public String handlerequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("±Û»èÁ¦ Ã³¸®");
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("ê¸€ ì‚­ì œ ì²˜ë¦¬");
 		
 		String seq=request.getParameter("seq");
 		boardVO vo = new boardVO();
@@ -19,8 +22,9 @@ public class deleteboardconteroller implements controller{
 		boardDAO DAO= new boardDAO();
 		DAO.deleteboard(vo);
 
-		
-		return "getboardlist";
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:getboardlist.do");
+		return mav;
 	}
 	
 }

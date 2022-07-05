@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.springbook.biz.board.impl.BoardDAO"%>
-<%@ page import="com.springbook.biz.board.BoardVO"%>
+<%@ page import="com.springbook.diz.board.BoardVO"%>
 
 <%
 	List<BoardVO> boardList = (List)session.getAttribute("boardList");

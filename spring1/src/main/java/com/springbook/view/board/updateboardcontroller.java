@@ -3,15 +3,19 @@ package com.springbook.view.board;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.springbook.biz.board.boardVO;
 import com.springbook.diz.board.impl.boardDAO;
-import com.springbook.view.controller.controller;
 
-public class updateboardcontroller implements controller{
+
+public class updateboardcontroller implements Controller{
+
 
 	@Override
-	public String handlerequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("±Û¼öÁ¤ Ã³¸®");
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+System.out.println("ê¸€ ìˆ˜ì • ì²˜ë¦¬");
 		
 		
 		String title= request.getParameter("title");
@@ -27,7 +31,9 @@ public class updateboardcontroller implements controller{
 		vo.setSeq(Integer.parseInt(seq));
 		DAO.updateboard(vo);
 		
-		return "getboardlist";
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("redirect:getboardlist.do");
+		return mav;
 	}
 
 }

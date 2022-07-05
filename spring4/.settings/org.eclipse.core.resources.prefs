@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//src/main/java/com/springbook/diz/board/boardserviceclient.java=UTF-8
+encoding//src/main/java/com/springbook/diz/board/impl/boardDAO.java=UTF-8
+encoding//src/main/java/com/springbook/diz/board/impl/boardservicimpl.java=UTF-8
+encoding//src/main/java/com/springbook/diz/common/afterreturningadvice.java=UTF-8
+encoding//src/main/java/com/springbook/view/board/boardcontroller.java=UTF-8
+encoding//src/main/java/com/springbook/view/user/logincontroller.java=UTF-8

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="/css/css/nav.css" type="text/css" >
+<link rel="stylesheet" href="css/nav.css?after" type="text/css" >
 
 <meta charset="EUC-KR">
 <title>Insert title here</title>
@@ -12,7 +12,7 @@
 <!--이미지 로고 -->
 <div class="sidebar">
 	<div>
-		<a href="main.jsp">
+		<a href="shoppingservlet?link=list">
 		<!-- 이미지 주소 -->
 		<img src="https://i.ibb.co/1G4LWbz/001.png" alt="001" border="0" class="log" >
 		</a>

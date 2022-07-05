@@ -4,15 +4,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.springbook.biz.board.boardVO;
 import com.springbook.diz.board.impl.boardDAO;
-import com.springbook.view.controller.controller;
 
-public class getboardcontroller implements controller{
+public class getboardcontroller implements Controller{
+
+	
 
 	@Override
-	public String handlerequest(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("±€ªÛºº ¡∂»∏ √≥∏Æ");
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("Í∏ÄÏÉÅÏÑ∏Ï°∞ÌöåÏ≤òÎ¶¨");
 		
 		String seq= request.getParameter("seq");
 		boardVO vo=new boardVO();
@@ -20,11 +24,11 @@ public class getboardcontroller implements controller{
 		boardDAO DAO = new boardDAO();
 		boardVO board = DAO.getboard(vo);
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("board", board);
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("board", board);
+		mav.setViewName("getboard");
 		
-		
-		return "getboard";
+		return mav;
 	}
 	
 }

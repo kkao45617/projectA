@@ -1,0 +1,13 @@
+@charset "EUC-KR";
+.main{
+	text-align: center;
+	width: 900px;
+}
+.img{
+	background-color:black;
+	height: 70px;
+	width: 70px;
+}
+.form{
+	
+}

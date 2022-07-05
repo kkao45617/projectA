@@ -6,7 +6,6 @@
     <fullyQualifiedTypeName name="java.security.Timestamp"/>
     <fullyQualifiedTypeName name="java.sql.Timestamp"/>
     <fullyQualifiedTypeName name="shoppingservelt.shoppinglist"/>
-    <fullyQualifiedTypeName name="controller.shoppinglist"/>
     <fullyQualifiedTypeName name="controller.shopping"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.mysql.cj.xdevapi.Result"/>
@@ -23,14 +22,7 @@
     <fullyQualifiedTypeName name="javax.servlet.annotation.WebServlet"/>
     <fullyQualifiedTypeName name="java.io.ObjectInputFilter.Config"/>
     <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
-    <fullyQualifiedTypeName name="DAO.shoppingDAO"/>
-    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="shoppingVO.shoppingVO"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="util.dbmanager"/>
     <fullyQualifiedTypeName name="java.lang.Process"/>
     <fullyQualifiedTypeName name="javax.swing.plaf.basic.BasicColorChooserUI"/>
     <fullyQualifiedTypeName name="com.springbook.diz.user.impl.userDAO"/>
@@ -60,4 +52,12 @@
     <fullyQualifiedTypeName name="com.springbook.diz.board.impl.boardDAO"/>
     <fullyQualifiedTypeName name="com.springbook.biz.board.boardVO"/>
     <fullyQualifiedTypeName name="com.springbook.view.board.updateboardcontroller"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="DAO.shoppingDAO"/>
+    <fullyQualifiedTypeName name="shoppingVO.shoppingVO"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="util.dbmanager"/>
+    <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="controller.shoppinglist"/>
 </qualifiedTypeNameHistroy>
