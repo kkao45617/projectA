@@ -16,7 +16,7 @@ public class boardservicimpl implements boardservice {
 	
 	@Autowired
 	private boardDAO boardDAO;
-
+	//private boardDAOspring boardDAO;
 	
 	
 	

@@ -19,7 +19,10 @@ public class logincontroller{
 	
 	@RequestMapping(value =  "/login.do", method=RequestMethod.POST)
 	public String login(userVO vo, userDAO DAO, HttpSession sessoin){
-		System.out.println("濡쒓렇�씤 泥섎━");
+		if(vo.getId()==null||vo.getId().equals("")) {
+			throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다.");
+		}
+		
 		userVO user = DAO.getuser(vo);
 		if(DAO.getuser(vo)!=null) {
 			sessoin.setAttribute("username",user.getName());

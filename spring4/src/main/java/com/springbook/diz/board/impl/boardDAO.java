@@ -23,6 +23,8 @@ public class boardDAO {
 	private final String board_get = "select * from board where seq=?";
 	private final String board_list ="select * from board order by seq desc";
 	private final String board_delete = "delete board where seq=?";
+	private final String board_list_t= "select * from board where title like '%'||?||'%' order by seq desc";
+	private final String board_list_c="select * from board where content like '%'||?||'%' order by seq desc";
 	
 	//글등록
 	public void insertboard(boardVO vo) {
@@ -66,7 +68,12 @@ public class boardDAO {
 		List<boardVO> boardlist = new ArrayList<boardVO>();
 		try {
 			conn=JDBCutil.getConnection();
-			stmt=conn.prepareStatement(board_list);
+			if(vo.getSerchcondition().equals("title")) {
+				stmt=conn.prepareStatement(board_list_t);
+			}else if(vo.getSerchcondition().equals("content")) {
+				stmt=conn.prepareStatement(board_list_c);
+			}
+			stmt.setString(1, vo.getSerchkeyword());
 			rs=stmt.executeQuery();
 			
 			while(rs.next()) {

@@ -1,6 +1,9 @@
 package com.springbook.view.board;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.springbook.diz.board.boardVO;
@@ -23,11 +28,28 @@ public class boardcontroller {
 	@Autowired
 	private boardservice boardservice;
 	
-	@RequestMapping("/insertboard.do")
-	public String insertboard(boardVO vo) {
-		boardservice.insertboard(vo);
-		return "getboardlist.do";
+	@RequestMapping("/datatransform.do")
+	@ResponseBody
+	public List<boardVO> datatransform(boardVO vo){
+		vo.setSerchcondition("title");
+		vo.setSerchkeyword("");
+		List<boardVO> boardlist = boardservice.getboardlist(vo);
+		return boardlist;
 	}
+	
+	
+	@RequestMapping("/insertboard.do")
+	public String insertboard(boardVO vo) throws IOException {
+		MultipartFile uploadfile = vo.getUploadfile();
+		if(!uploadfile.isEmpty()) {
+			String filename = uploadfile.getOriginalFilename();
+			uploadfile.transferTo(new File("c:/upload/"+filename));
+		}
+		
+		boardservice.insertboard(vo);
+		return "getlistboard.do";
+	}
+	
 	
 	@RequestMapping("/deleteboard.do")
 	public String deleteboard(boardVO vo) {
@@ -55,12 +77,9 @@ public class boardcontroller {
 	}
 	
 	@RequestMapping("/getlistboard.do")
-	public String getboardlist(@RequestParam(value = "serchcondition",defaultValue = "title", required = false) 
-	String condition,@RequestParam(value = "serchkeyword",defaultValue = "",required = false) String keyword , 
-	 boardVO vo,Model model) {
-		System.out.println("湲�紐⑸줉 寃��깋 泥섎━");
-		System.out.println("검색 조건"+condition);
-		System.out.println("검색 단어"+keyword);
+	public String getboardlist(boardVO vo, Model model) {
+		if(vo.getSerchcondition()==null)vo.setSerchcondition("title");
+		if(vo.getSerchkeyword()==null)vo.setSerchkeyword("");
 		
 		model.addAttribute("boardlist",boardservice.getboardlist(vo));
 		

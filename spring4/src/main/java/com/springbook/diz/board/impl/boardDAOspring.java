@@ -26,6 +26,9 @@ public class boardDAOspring {
 	private final String board_delete = "delete board where seq=?";
 	private final String board_get = "select * from board where seq=?";
 	private final String board_list = "select * from board order by seq desc";
+	private final String board_list_t= "select * from board where title like '%'||?||'%' order by seq desc";
+	private final String board_list_c="select * from board where content like '%'||?||'%' order by seq desc";
+	
 	
 	public void insertboard(boardVO vo) {
 		System.out.println("------>insert board 扁瓷 贸府");
@@ -49,7 +52,13 @@ public class boardDAOspring {
 	
 	public List<boardVO> getboardlist(boardVO vo) {
 		System.out.println("--->boardlist 贸府");
-		return jdbctemplate.query(board_list,  new boardrowmapper());
+		Object[] args = {vo.getSerchkeyword()};
+		if(vo.getSerchcondition().equals("title")) {
+			return jdbctemplate.query(board_list_t, args, new boardrowmapper());
+		}else if(vo.getSerchcondition().equals("content")) {
+			return jdbctemplate.query(board_list_t ,args, new boardrowmapper());
+		}
+		return null;
 	}
 	
 }
