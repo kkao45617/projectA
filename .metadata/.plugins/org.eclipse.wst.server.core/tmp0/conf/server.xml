@@ -108,7 +108,7 @@
 
 
 				
-			<Context docBase="C:\Users\kkao4\Desktop\projectA\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\kkao4\Desktop\projectA\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring4" path="/diz" reloadable="true" source="org.eclipse.jst.jee.server:spring4"/></Host>
+			<Context docBase="C:\Users\kkao4\Desktop\projectA\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\kkao4\Desktop\projectA\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ex00" path="/controller" reloadable="true" source="org.eclipse.jst.jee.server:ex00"/></Host>
 		</Engine>
 	</Service>
 </Server>
