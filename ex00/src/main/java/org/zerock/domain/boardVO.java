@@ -1,18 +1,20 @@
 package org.zerock.domain;
-/*
- * bno not null number(10)
- * title not null varchar2(200)
- * content not null varchar2(30000)
- * 
- * */
 
 import java.util.Date;
 
 import lombok.Data;
 
+/*
+  BNO        NOT NULL NUMBER(10)     
+TITLE      NOT NULL VARCHAR2(200)  
+CONTENT    NOT NULL VARCHAR2(2000) 
+WRITER     NOT NULL VARCHAR2(50)   
+REGDATE             DATE           
+UPDATEDATE          DATE 
+ */
 @Data
-public class boardVO {
-	private long bno;
+public class BoardVO {
+	private Long bno;
 	private String title, content, writer;
-	private Date regdate,updatedate;
+	private Date regdate, updatedate;
 }

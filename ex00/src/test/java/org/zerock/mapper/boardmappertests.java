@@ -1,82 +1,70 @@
 package org.zerock.mapper;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.zerock.domain.boardVO;
-import org.zerock.persistence.datasourcetests;
+import org.zerock.domain.BoardVO;
+import org.zerock.persistence.DataSourceTests;
 
-import jdk.internal.jline.internal.Log;
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@Log4j
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
-public class boardmappertests {
+@Log4j
+public class BoardMapperTests {
 	
 	@Autowired
-	private boardMapper mapper;
+	private BoardMapper mapper;
 	
 	@Test
-	public void testgetlist() {
-		//mapper.getList().forEach(board->log.info(board));
-		
-		//log.info("----------------------------------------");
-		
-		for (boardVO vo : mapper.getList()) {
+	public void testGetList() {
+	//	mapper.getList().forEach(board->log.info(board));
+		for (BoardVO vo : mapper.getList()) {
 			log.info(vo);
 		}
 	}
-	//±×³É ÀÎ¼³Æ®
 	@Test
-	public void inserttest() {
-		boardVO vo = new boardVO();
-		vo.setTitle("È«±æµ¿ÀÌ");
-		vo.setContent("¾Æ¸¶µµ ¼½½ÃÅ·");
-		vo.setWriter("ÀÌÀçÇö ÀúÀÚ");
+	public void testinsert() {
+		BoardVO vo = new BoardVO();
+		vo.setTitle("javaì˜ ì •ì„");
+		vo.setContent("ìë°” ì±… ........");
+		vo.setWriter("ë‚¨ê¶ì„±");
 		mapper.insert(vo);
-		log.info("-----------------------------------------------------------ÀÎ¼³Æ®");
 		log.info(vo);
 	}
-	
-	//Á»´õ ÀÚ¼¼ÇÑ ÀÎ¼³Æ®¿¡ ´ëÇÑ ³»¿ë ·Î±×·Î Âï±â
 	@Test
-	public void inserttestkey() {
-		boardVO vo = new boardVO();
-		vo.setTitle("È«±æµ¿ÀÌ");
-		vo.setContent("¾Æ¸¶µµ ¼½½ÃÅ·");
-		vo.setWriter("ÀÌÀçÇö ÀúÀÚ");
-		mapper.insertselectkey(vo);
-		log.info("-----------------------------------------------------------ÀÎ¼³Æ®");
+	public void testSelectKey() {
+		BoardVO vo = new BoardVO();
+		vo.setTitle("Jsp2");
+		vo.setContent("JSP2/servlet");
+		vo.setWriter("ì„±ìœ¤ì •2");
+		mapper.insertSelectKey(vo);
 		log.info(vo);
 	}
-	
 	@Test
-	public void read() {
-		boardVO vo= mapper.read(7L);
+	public void testread() {
+		BoardVO vo = mapper.read(42L);
 		log.info(vo);
 	}
-	
-	//@Test
-	/*public void testdelete() {
-		int a =mapper.delete(12L);
-		log.info("0000000000000000000000000000000000000000000000000000000000000000000000000");
-		log.info(a);
-	}*/
-	
+	@Test
+	public void testdelete() {
+		log.info("delete count : "+mapper.delete(42L) );
+	}
 	@Test
 	public void testupdate() {
-		boardVO vo = new boardVO();
-		vo.setBno(14L);
-		vo.setTitle("Àß»ı±ä »ç¶÷Àº");
-		vo.setContent("±× »ç¶÷Àº ÀÌ Ã¥ÀÇ ÀúÀÚ");
-		vo.setWriter("ÀÌÀçÇö ¾¾ ÀÔ´Ï´Ù!");
-		
-		int a= mapper.update(vo);
-		log.info(a+"5555555555555555555555555555555555555555555555555555555555");
+		BoardVO vo  =  new BoardVO();
+		vo.setBno(21L);
+		vo.setTitle("ìë°”2");
+		vo.setContent("ìë°”2");
+		vo.setWriter("ìë°”2");
+		log.info("update : " +   mapper.update(vo) );
 	}
+	
+	
+	
+	
+	
+	
 }
