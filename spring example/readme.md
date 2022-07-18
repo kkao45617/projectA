@@ -37,6 +37,10 @@
 		</dependency>
 		
 		
+/*실행계획, 인덱스+힌트*/ 속도향상 쪽 sql문
+select /*+ index_desc(tbl_board pk_board) */ * from tbl_board where bno>0;
+select * from TBL_BOARD order by bno+1 desc;
+		
 /*포트 조회*/
 select dbms_xdb.gethttpport() from dual;
 /*포트수정*/

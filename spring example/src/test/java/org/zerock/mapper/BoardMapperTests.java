@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 
 import lombok.extern.log4j.Log4j;
 
@@ -63,5 +64,14 @@ public class BoardMapperTests {
 		vo.setContent("놀라자빠지고마");
 		vo.setWriter("이거사줬나");
 		log.info(mapper.update(vo));
+	}
+	
+	@Test
+	public void testpaging() {
+		Criteria cri = new Criteria();
+		cri.setPageNum(3);
+		cri.setAmount(10);
+		List<BoardVO> list = mapper.getListWithPagging(cri);
+		log.info(list);
 	}
 }
