@@ -108,7 +108,7 @@
 
 
 				
-			<Context docBase="spring example" path="/" reloadable="true" source="org.eclipse.jst.jee.server:spring example"/></Host>
+			<Context docBase="spring example1" path="/" reloadable="true" source="org.eclipse.jst.jee.server:spring example1"/></Host>
 		</Engine>
 	</Service>
 </Server>
