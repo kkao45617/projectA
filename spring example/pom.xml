@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+d<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
@@ -8,6 +8,9 @@
 	<name>spring example</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
+	
+	
+	<!-- 여기서 부터 복붙 -->
 	<properties>
 		<java-version>11</java-version>
 		<org.springframework-version>5.2.7.RELEASE</org.springframework-version>
