@@ -57,21 +57,18 @@ public class RestSampleController {
 		vo.setMno(000);
 		vo.setFirstName("박");
 		vo.setLastName("찬호");
-		
 		list.add(vo);
 		
 		SampleVO vo2 = new SampleVO();
 		vo.setMno(111);
 		vo.setFirstName("이");
 		vo.setLastName("재현");
-		
 		list.add(vo2);
 		
 		SampleVO vo3 = new SampleVO();
 		vo.setMno(222);
 		vo.setFirstName("여");
 		vo.setLastName("수밤바다");
-		
 		list.add(vo3);
 		
 		return list;
@@ -116,4 +113,8 @@ public class RestSampleController {
 		log.info("convert : "+ticket);
 		return ticket;
 	}
+	
+	
+	
+	
 }

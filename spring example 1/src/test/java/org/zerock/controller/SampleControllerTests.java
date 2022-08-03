@@ -1,7 +1,9 @@
 package org.zerock.controller;
 
 
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -50,9 +52,9 @@ public class SampleControllerTests {
 		mockmvc.perform(
 				post("/sample/ticket")
 				.contentType(MediaType.APPLICATION_JSON)
-				.content(jsonStr)
-				.and
-				);
+				.content(jsonStr))
+				.andExpect(status().is(200));
+				
 		
 	}
 }

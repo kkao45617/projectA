@@ -1,4 +1,4 @@
-* ì˜¤ë¼í´ ì‚¬ìš©ì ìƒì„±
+ÀÌ°Ô ¾Æ¸¶ ºÏ °ü·Ã °èÁ¤ ¸¸µé±â
 create user book IDENTIFIED by 1234
 default TABLESPACE users
 TEMPORARY TABLESPACE temp;
@@ -20,7 +20,7 @@ alter table tbl_board add CONSTRAINT pk_board
 PRIMARY key(bno);
 
 insert into TBL_BOARD(bno, title, content, writer)
-values(seq_board.nextval, 'java', 'ë‚´ìš©....', 'ë‚¨ê¶ì„±');
+values(seq_board.nextval, 'java', '¾îÂ¼±¸....', 'ÀÌÀçÇö');
 
 create table tbl_reply(
     rno number(10,0),
@@ -37,3 +37,14 @@ alter table tbl_reply add CONSTRAINT pk_reply PRIMARY key (rno);
 
 alter table tbl_reply add CONSTRAINT fk_reply_board
 foreign key (bno) references tbl_board(bno);
+
+
+
+/*´ñ±ÛÃ³¸® Å×ÀÌºí ¹× ¿Ü·¡Å° Àû¿ë*/
+
+create table tbl_reply(rno number(10,0), bno number(10,0) not null, reply varchar2(1000) not null, replyer varchar2(50) not null, replydate date default sysdate, updatedate date default sysdate);
+create sequence seq_reply;
+alter table tbl_reply add constraint pk_reply primary key (rno);
+
+alter table tbl_reply add constraint fk_reply_board foreign key (bno) references tbl_board(bno);
+desc tbl_reply;

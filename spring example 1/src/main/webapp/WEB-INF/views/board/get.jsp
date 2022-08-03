@@ -56,7 +56,15 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            
+  
+  <script type="text/javascript"src="/resources/js/reply.js"> </script>
+  <script>
+  	$(document).ready(function(){
+  		console.log(replyservice.add());
+  	});
+  </script>
+  
+  
   <script>
   		var operForm = $("#operForm");
   		
