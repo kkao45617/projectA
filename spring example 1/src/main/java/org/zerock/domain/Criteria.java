@@ -1,12 +1,15 @@
 package org.zerock.domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.extern.log4j.Log4j;
 
-@Getter
-@Setter
+
 @ToString
+@Log4j
+@Data
 public class Criteria {
 	
 	private int pageNum;
@@ -27,6 +30,7 @@ public class Criteria {
 		this.pageNum  = pageNum;
 		this.amount = amount;
 	}
+
 	
 	
 	

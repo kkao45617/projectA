@@ -52,26 +52,27 @@
 						</tr>
 					</c:forEach>
 				</table>
+				
 				<!-- 검색 조건 Start-->
-				  <form id="searchForm" action="/board/list" method="get">
-				  	<select name = 'type'>
-				  		<option value="" <c:out value="${pageMaker.cri.type==null?'selected':'' }"/> >선택 안함</option>
-				  		<option value="T" <c:out value="${pageMaker.cri.type eq 'T'? 'selected':'' }"/> >제목</option>
-				  		<option value="C" <c:out value="${pageMaker.cri.type eq 'C'? 'selected':'' }"/> >내용</option>
-				  		<option value="W" <c:out value="${pageMaker.cri.type eq 'W'?'selected':'' }"/> >작성자</option>
-				  		<option value="TC" <c:out value="${pageMaker.cri.type eq 'TC'?'selected':'' }"/> >제목+내용</option>
-				  		<option value="TW" <c:out value="${pageMaker.cri.type eq 'TW'?'selected':'' }"/> >제목+작성자</option>
-				  		<option value="TCW" <c:out value="${pageMaker.cri.type eq 'TCW'?'selected':'' }"/> >제목+작성자+내용</option>
-				  	</select>
-				   
-				    <input type="text"  name="keyword" placeholder="검색 입력" onfocus="this.placeholder=''" onblur="this.placeholder='검색 입력'"/>
-				    <input type="hidden" name="pageNum" value='${pageMaker.cri.pageNum }'/>
-				    <input type="hidden" name="amount" value='${pageMaker.cri.amount}'/>
-				    
-				    <button class="btn btn-default" >Search</button>
-				   
-				  </form>
-				 
+					<form	id="searchForm" action="/board/list" method="get">
+						<select name="type">
+							<option value=""   	<c:out value="${pageMaker.cri.type == null ? 'selected' : '' }"/>  	>--</option>
+							<option value="T"
+							<c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : '' }"/>
+							>제목</option>
+							<option value="C" <c:out value="${pageMaker.cri.type eq 'C' ? 'selected' : '' }"/>>내용</option>
+							<option value="W" <c:out value="${pageMaker.cri.type eq 'W' ? 'selected' : '' }"/>>작성자</option>
+							<option value="TC" <c:out value="${pageMaker.cri.type eq 'TC' ? 'selected' : '' }"/>>제목+내용</option>
+							<option value="TW" <c:out value="${pageMaker.cri.type eq 'TW' ? 'selected' : '' }"/>>제목+작성자</option>
+							<option value="TCW"  <c:out value="${pageMaker.cri.type eq 'TCW' ? 'selected' : '' }"/> >제목+내용+작성자</option>
+						</select>
+						
+						<input type="text" name="keyword" />
+						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+						<button class="btn btn-primary">Search</button>
+					</form>	
+							
 				<!-- 검색 조건 End -->
 				
 				<!-- 페이지 처리 Start -->
@@ -97,9 +98,8 @@
 				<form id="actionForm" action="/board/list" method="get">
 					<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 					<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-					<input type="hidden" name="type" value="${pageMaker.cri.type }">
-					<input type="hidden" name="keyword" value="${pageMaker.cri.keyword }">
-					
+					<input type="hidden" name="type" value="${pageMaker.cri.type}">
+					<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 				</form>
 				
 				<!-- /.table-responsive -->
@@ -184,20 +184,21 @@
 		
 		
 		var searchForm = $("#searchForm");
+		
 		$("#searchForm button").on("click", function(e){
 			e.preventDefault();
 			
 			if(!searchForm.find("option:selected").val()){
-				alert("검색종류 입력하세요.")
+				alert("검색종류를 선택하세요.")
 				return false;
 			}
-				
-				
-			if( !searchForm.find("input[name='keyword']").val()) {
-				alert("키워드를 입력하세요.")
+
+			if(!searchForm.find("[name='keyword']").val()){
+				alert("키워드를 선택하세요.")
 				return false;
 			}
-			searchForm.find("input[name='pageNum']").val("1");
+			
+			searchForm.find("input[name='pageNum']").val(1);
 			searchForm.submit();
 		});
 		

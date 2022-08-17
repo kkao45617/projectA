@@ -1,6 +1,6 @@
 package org.zerock.mapper;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.junit.Test;
@@ -21,48 +21,73 @@ public class ReplyMapperTests {
 	@Autowired
 	private ReplyMapper mapper;
 	
-	private Long[] bnoarr= {5L,6L,7L,8L};
+	private Long[] bnoArr = {215L, 216L, 217L, 218L, 219L};
 	
 	@Test
 	public void testMapper() {
 		log.info(mapper);
 	}
-
+	
 	@Test
 	public void testCreate() {
 		for(int i=0; i<5; i++) {
-		ReplyVO vo = new ReplyVO();
-		vo.setBno(bnoarr[i]);
-		vo.setReply("ÀÌÀçÇö"+i+1);
-		vo.setReplyer("³ÊÀÇ ¾ó±¼ÀÌ¿¡¿ä"+i+1);
-		mapper.insert(vo);
+			ReplyVO vo = new ReplyVO();
+			vo.setBno(10L);
+			vo.setReply("í™ê¸¸ë™ì „0 " + i+1);
+			vo.setReplyer("ê¸¸ë™0" + i+1);
+			mapper.insert(vo);
 		}
-		
 	}
 	
 	@Test
-	public void testread() {
-		ReplyVO vo = mapper.read(3L);
+	public void testRead() {
+		ReplyVO vo = mapper.read(100L);
 		log.info(vo);
 	}
+
 	@Test
-	public void testdelete() {
-		log.info(mapper.delete(3L));
+	public void testDelete() {
+		log.info(mapper.delete(100L));
 	}
-	
+
 	@Test
 	public void testupdate() {
 		ReplyVO vo = new ReplyVO();
-		vo.setRno(5L);
-		vo.setReply("Àß»ý±ä");
+		vo.setReply("ìˆ˜ì •ì¤‘......");
+		vo.setRno(2L);		
 		log.info(mapper.update(vo));
 	}
 	
 	@Test
-	public void testlist() {
-		Criteria cri = new Criteria();
-		List<ReplyVO> list= mapper.getListwithPaging(cri, 2L);
-		log.info(list);
+	public void testList() {
+		Criteria cri =  new Criteria();
+		List<ReplyVO> replies = mapper.getListWithPaging(cri, bnoArr[0]);
+		log.info(replies);
 	}
+	
+	@Test
+	public void testlist2() {
+		Criteria cri= new Criteria(1,2);
+		List<ReplyVO> replies = mapper.getListWithPaging(cri, 274581L);
+		
+		replies.forEach(reply->log.info(reply));
+	}
+	
+	@Test
+	public void testcount() {
+		int num = mapper.getcountbybno(274581L);
+		log.info("num : " + num);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

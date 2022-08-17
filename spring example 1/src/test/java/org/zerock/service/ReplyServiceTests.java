@@ -12,26 +12,37 @@ import lombok.extern.log4j.Log4j;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
-public class ReplyServiceTests{
+public class ReplyServiceTests {
 	
 	@Autowired
 	private ReplyService service;
 	
 	@Test
-	public void inserttests() {
+	public void test() {
 		log.info(service);
+		
 	}
 	
 	@Test
 	public void testRegister() {
 		ReplyVO vo = new ReplyVO();
-		vo.setBno(271483L);
-		vo.setReply("바보야");
-		vo.setReplyer("이바보야~잘지내니");
+		vo.setBno(1L);
+		vo.setReply("수원");
+		vo.setReplyer("이젠");
 		service.register(vo);
 	}
+	
 	@Test
-	public void testremove() {
-		service.remove(271483L);
+	public void testRemove() {
+		service.remove(147L);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

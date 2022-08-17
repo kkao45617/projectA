@@ -1,14 +1,9 @@
 package org.zerock.service;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
-import org.apache.tomcat.jni.File;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.zerock.domain.BoardVO;
 import org.zerock.domain.Criteria;
 import org.zerock.mapper.BoardMapper;
@@ -54,14 +49,5 @@ public class BoardServiceImpl implements BoardService{
 		log.info("get total count");
 		return mapper.getTotalCount(cri);
 	}
-
-	@Override
-	public void fileprocess(MultipartHttpServletRequest mul) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	
 	
 }

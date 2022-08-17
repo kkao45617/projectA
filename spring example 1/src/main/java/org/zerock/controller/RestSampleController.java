@@ -1,10 +1,12 @@
 package org.zerock.controller;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,105 +18,106 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.zerock.domain.SampleVO;
 import org.zerock.domain.Ticket;
 
 import lombok.extern.log4j.Log4j;
+import oracle.jdbc.proxy.annotation.Post;
 
-//@Controller
-@RestController //controller+resoponsebody
+@RestController
 @RequestMapping("/sample")
 @Log4j
 public class RestSampleController {
-	
-	@ResponseBody
-									//π›»Ø«¸ *produces*
-	@GetMapping(value = "/getText" , produces = {MediaType.TEXT_PLAIN_VALUE})
+	                                                             //ÔøΩÔøΩ»ØÔøΩÔøΩ
+//	@GetMapping(value="/getText" , produces = "text/plain; charset=utf-8")
+	@GetMapping(value="/getText" , produces = {MediaType.TEXT_PLAIN_VALUE})
 	public String getText() {
-		log.info("miny type : "+MediaType.TEXT_PLAIN_VALUE);
-		return "æ»≥Á«œººø‰";
+		log.info("MINY TYPE : " + MediaType.TEXT_PLAIN_VALUE);
+		return "ÏïàÎÖïÌïòÏÑ∏Ïöî";
 	}
 	
-	//∞¥√ºπ›»Ø
-	@GetMapping(value = "/getSample", produces = {
-				//MediaType.APPLICATION_JSON_UTF8_VALUE,
-				MediaType.APPLICATION_XML_VALUE,
-				MediaType.APPLICATION_JSON_VALUE
-	})
-	//@ResponseBody
-	public SampleVO getSample() {
-		return new SampleVO(111,"»´","±Êµø");
-	}
-	
-	@GetMapping(value = "/getlist",produces = {
+	//Í∞ùÏ≤¥Î∞òÌôò
+	@GetMapping(value="/getSample", produces = {
 			MediaType.APPLICATION_JSON_VALUE,
 			MediaType.APPLICATION_XML_VALUE
 	})
-	public List<SampleVO> getlist(){
+	public SampleVO getSample() {
+		log.info("getSample---------------------");
+		return new SampleVO(111,  "Ìôç",  "Í∏∏Îèô");
+	}
+	
+	@GetMapping(value="/getList", produces = {
+			MediaType.APPLICATION_JSON_VALUE,
+			MediaType.APPLICATION_XML_VALUE})
+	public List<SampleVO> getList(){
 		List<SampleVO> list = new ArrayList<SampleVO>();
 		SampleVO vo = new SampleVO();
 		vo.setMno(000);
-		vo.setFirstName("π⁄");
-		vo.setLastName("¬˘»£");
+		vo.setFirstName("Î∞ï");
+		vo.setLastName("Ï∞¨Ìò∏");
 		list.add(vo);
 		
 		SampleVO vo2 = new SampleVO();
-		vo.setMno(111);
-		vo.setFirstName("¿Ã");
-		vo.setLastName("¿Á«ˆ");
+		vo2.setMno(111);
+		vo2.setFirstName("ÍπÄ");
+		vo2.setLastName("Ï∞¨Ìò∏");
 		list.add(vo2);
 		
 		SampleVO vo3 = new SampleVO();
-		vo.setMno(222);
-		vo.setFirstName("ø©");
-		vo.setLastName("ºˆπ„πŸ¥Ÿ");
+		vo3.setMno(222);
+		vo3.setFirstName("Ìôç");
+		vo3.setLastName("Ï∞¨Ìò∏");
 		list.add(vo3);
 		
 		return list;
+		
 	}
 	
-	@GetMapping(value = "/getmap",produces = {
+	@GetMapping(value="/getMap", produces = {
 			MediaType.APPLICATION_JSON_VALUE,
-			MediaType.APPLICATION_XML_VALUE
-	})
-	public Map<String, SampleVO> getmap(){
-		Map<String, SampleVO> map = new HashMap<String, SampleVO>();
-		map.put("first", new SampleVO(111,"¿Ã","¿Á«ˆ"));
-		map.put("second", new SampleVO(222,"∞©","∫¸±¯"));
+			MediaType.APPLICATION_XML_VALUE }
+	)
+	public Map<String, SampleVO> getMap(){
+		Map<String, SampleVO> map =  new HashMap<>();
+		map.put("First", new SampleVO(111, "ÏàòÏõê", "Ïù¥Ï††"));
+		map.put("Second", new SampleVO(222, "Í≤ΩÍ∏∞", "ÌåîÎã¨Íµ¨"));
 		return map;
 	}
 	
-	@GetMapping(value = "/check", params = {"height","weight"})
-	public ResponseEntity<SampleVO> check(double height, double weight){
-		SampleVO vo = new SampleVO(1,""+height,""+weight);
+	
+	//ÏÉÅÌÉú ÏΩîÎìúÎ°ú Ìï®Íªò Ï†ÑÏÜ°.
+	@GetMapping(value="/check", params = {"height", "weight"}	)
+	public ResponseEntity<SampleVO> check(Double height, Double weight){
+		SampleVO vo = new SampleVO(1, " " + height , " "+ weight);
 		ResponseEntity<SampleVO> result = null;
 		
-		if(height<150) {
+		if( height < 150) {
 			result = ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(vo);
 		}else {
-			result= ResponseEntity.status(HttpStatus.OK).body(vo);
-			
+			//result = ResponseEntity.status(HttpStatus.OK).body(vo);
+			result = new ResponseEntity<SampleVO>(vo,  HttpStatus.OK);
 		}
-		
 		return result;
 	}
 	
-	@GetMapping(value = "/product/{cat}/{pid}")
-	public String[] getpath(
-			@PathVariable("cat")String cat,
-			@PathVariable("pid")String pid
+	@GetMapping(value="/product/{cat}/{pid}")
+	public String[] getPath(
+			@PathVariable("cat") String cat,
+			@PathVariable("pid") String pid
 			) {
-		return new String[] {"category : "+cat,"productid : "+pid};
+		return new String[] { "category : " + cat, "productid : " + pid } ;
 	}
 	
 	@PostMapping("/ticket")
 	public Ticket convert(@RequestBody Ticket ticket) {
 		log.info("convert : "+ticket);
+		ticket.setTno(200);
+		ticket.setOwner("ÌôçÍ∏∏Îèô");
+		ticket.setGrade("CÎì±Í∏â");
 		return ticket;
 	}
-	
-	
 	
 	
 }

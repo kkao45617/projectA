@@ -1,7 +1,5 @@
 package org.zerock.controller;
 
-
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -24,37 +22,47 @@ import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
-						"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"})
+											"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"})
 @WebAppConfiguration
 @Log4j
 public class SampleControllerTests {
 	@Autowired
-	private WebApplicationContext ctx;
+	private WebApplicationContext ctx ;
 	
-	private MockMvc mockmvc;
+	private MockMvc mockMvc;
 	
 	@Before
 	public void setup() {
-		this.mockmvc= MockMvcBuilders.webAppContextSetup(ctx).build();
-		
+		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 	
 	@Test
-	public void testconvert() throws Exception{
-		Ticket ticket = new Ticket();
+	public void testConvert() throws Exception{
+		Ticket ticket  = new Ticket();
 		ticket.setTno(100);
-		ticket.setOwner("ȫ�浿");
+		ticket.setOwner("홍길동");
 		ticket.setGrade("AAA");
 		
-		String jsonStr= new Gson().toJson(ticket);
-		System.out.println("ticket : ------->"+ticket.toString());
-		System.out.println("jsonstr : "+jsonStr);
-		mockmvc.perform(
+		System.out.println("ticket : -----> " + ticket.toString());
+		
+		//java객체를 json으로 변환
+		String jsonStr = new Gson().toJson(ticket);
+		System.out.println("jsonStr " + jsonStr);
+		
+		mockMvc.perform(
 				post("/sample/ticket")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(jsonStr))
 				.andExpect(status().is(200));
-				
-		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

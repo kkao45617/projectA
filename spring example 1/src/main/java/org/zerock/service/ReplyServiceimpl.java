@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.ReplyPageDTO;
 import org.zerock.domain.ReplyVO;
 import org.zerock.mapper.ReplyMapper;
 
@@ -12,7 +13,7 @@ import lombok.extern.log4j.Log4j;
 
 @Service
 @Log4j
-public class ReplyServiceimpl implements ReplyService{
+public class ReplyServiceImpl implements ReplyService{
 
 	@Autowired
 	private ReplyMapper mapper;
@@ -39,7 +40,15 @@ public class ReplyServiceimpl implements ReplyService{
 
 	@Override
 	public List<ReplyVO> getList(Criteria cri, Long bno) {
-		return mapper.getListwithPaging(cri, bno);
+		return mapper.getListWithPaging(cri, bno);
+	}
+
+	@Override
+	public ReplyPageDTO getReplyPage(Criteria cri, Long bno) {
+		return new ReplyPageDTO(
+				mapper.getcountbybno(bno),
+				mapper.getListWithPaging(cri, bno)
+				);
 	}
 
 }
