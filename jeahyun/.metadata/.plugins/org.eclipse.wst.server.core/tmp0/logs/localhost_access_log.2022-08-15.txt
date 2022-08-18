@@ -1,0 +1,5 @@
+0:0:0:0:0:0:0:1 - - [15/Aug/2022:00:02:53 +0900] "GET /ptproduct/ptregister HTTP/1.1" 200 2792
+0:0:0:0:0:0:0:1 - - [15/Aug/2022:00:02:54 +0900] "GET /ptproduct/ptregister HTTP/1.1" 200 2792
+0:0:0:0:0:0:0:1 - - [15/Aug/2022:00:03:05 +0900] "POST /ptproduct/summernoteImage HTTP/1.1" 200 93
+0:0:0:0:0:0:0:1 - - [15/Aug/2022:00:03:05 +0900] "GET /resources/upload/f52c9c83-d269-45e2-87d0-d6d504fc364a.png HTTP/1.1" 200 27234
+0:0:0:0:0:0:0:1 - - [15/Aug/2022:00:03:08 +0900] "POST /ptproduct/ptregister HTTP/1.1" 400 843
