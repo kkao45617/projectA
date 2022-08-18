@@ -30,7 +30,8 @@ var replyService = ( function() {
         $.getJSON("/replies/pages/" + bno + "/" + page + ".json" ,
             function(data){
                 if(callback) {
-                    callback(data);
+                   // callback(data); 댓글 목록만 가져오는경우 사용
+                   callback(data.replyCnt,dta.list);
                 }
 
             }).fail(function(xhr, status, err){

@@ -88,7 +88,7 @@ public class ReplyController {
 		
 		vo.setRno(rno);
 		return service.modify(vo)==1? new ResponseEntity<String>("success",HttpStatus.OK) :
-														new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+		new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 }
