@@ -4841,3 +4841,9 @@ Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: only whites
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2022-08-18 17:16:13.637
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2022-08-18 17:16:19.679
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2022-08-18 17:16:19.899
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
