@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+장바구니로 흘러들어옴
+
+<table	border="1">
+	<tr>사용자 아이디</tr>
+	<tr>상품 이름</tr>
+	<tr>상품 금액</tr>
+	<tr>상품 사진</tr>
+	<tr>결제상태</tr>
+	<tr>상품 코드</tr>
+	<tr>상품일자</tr>
+</table>
+</body>
+</html>
