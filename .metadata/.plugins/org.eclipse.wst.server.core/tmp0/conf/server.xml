@@ -108,7 +108,7 @@
 
 
 				
-			<Context docBase="C:\Users\kkao4\Desktop\projectA\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\kkao4\Desktop\projectA\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring example 2" path="/controller" reloadable="true" source="org.eclipse.jst.jee.server:spring example 2"/></Host>
+			<Context docBase="C:\Users\kkao4\Desktop\projectA\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\spring example 2" path="" reloadable="true" source="org.eclipse.jst.jee.server:spring example 2"/><Context docBase="C:\Users\kkao4\Desktop\projectA\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\hrd_exam" path="/HRD_EXAM" reloadable="true" source="org.eclipse.jst.jee.server:hrd_exam"/></Host>
 		</Engine>
 	</Service>
 </Server>

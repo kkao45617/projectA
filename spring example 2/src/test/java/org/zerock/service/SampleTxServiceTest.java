@@ -17,7 +17,7 @@ public class SampleTxServiceTest {
 	
 	@Test
 	public void testing() {
-		String str="송고시간2022-08-19 11:58 요약";
+		String str="송고시간2022-08-19 11:58 요약 송고시간2022-08-19 11:58 요약 송고시간2022-08-19 11:58 요약 송고시간2022-08-19 11:58 요약 송고시간2022-08-19 11:58 요약 송고시간2022-08-19 11:58 요약";
 		log.info("lenth : "+str.getBytes().length);
 		service.addData(str);
 		

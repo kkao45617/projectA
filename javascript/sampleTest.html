@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <script src="sampletest2.js"></script>
+    <title>Document</title>
+    
+</head>
+<body>
+    <!--<h3>문서 객체 모델을 이용한 자동차 견적 미리보기</h3>
+    <h1>전기자동차 견적</h1>
+
+    <input type="checkbox" name="opt1" id="opt1" value="250000" onclick="car();">
+    <span>인조가죽셋트/25000</span><br>
+
+    <input type="checkbox" name="opt2" id="opt2" value="250000" onclick="car();">
+    <span>내비게이션/250000</span><br>
+
+    <input type="checkbox" name="opt3" id="opt3" value="400000" onclick="car();">
+    <span>선루프/40000</span><br>
+    
+    <h3>차량견적</h3>
+    <input name="total" id="total" value="0">
+
+   <button onclick="clearInterval(auto_1)">증가 정지</button>
+   <button onclick="clearInterval(auto_2)">감소 정지</button>
+    -->
+   
+
+   <script>
+    //객체 생성자 함수
+    function checkweight(name,height, weight){
+        this.username= name;
+        this.userheight=height;
+        this.userweight=weight;
+        this.minweight;
+        this.maxweight;
+
+        this.getinfo=function(){
+            let str="";
+            str+="이름 : "+this.username+",",
+            str+="키 : "+this.userheight+",";
+            str+="몸무게:"+this.userweight+"<br>";
+
+            return str;
+        };
+        this.getresult=function(){
+            this.minweight=(this.userheight-100)*0.9-5;
+            this.maxweight=(this.userheight)*0.8+5;
+
+            if(this.userweight>=this.minweight&&
+                this.userweight<=this.maxweight){
+                    return "정상 몸무게 입니다";
+                }else if(this.userweight<this.minweight){
+                    return "정상보다 미달";
+                }else{
+                    return "정상 초과";
+                }
+            };
+        
+        };
+        var jang = new checkweight("박자상",153,50);
+        var 박씨 = new checkweight("홍인방",321,42);
+        console.log(jang);
+        console.log(박씨);
+
+        document.write(jang.getinfo);
+        document.write(박씨.getinfo);
+
+    //콜백함수 -->map()(filter)
+    /*
+    let numarr =[1,2,3,4,5,6,7,8,9];
+    numarr.filter((value)=>value%2===0)
+        .map((value)=>value*1.2)
+        .forEach((value)=>{
+            console.log(value)
+        });
+*/
+    
+    //콜백함수 -->map()(filter)
+   /* let numArr=[10,20,30,40,50];
+    let newarr;
+    newarr = numArr.filter(function(value,index,array){
+        return value%2==1;
+    });
+    for(let i=0; i<newarr.length; i++){
+        console.log(newarr[i]);
+    }
+*/
+
+    /*
+    //콜백함수  -->foreach()
+    let numArr = [10,20,30,40,50];
+    let sum=0;
+    numArr.forEach(
+        function(value, index,array){
+            console.log('${index}번째 요소 ${value}');
+            sum+=value;
+        });
+        */
+
+
+    //콜백함수
+    /*function callback(callback){
+        for(let i=0;i<3;i++)
+            callback(i);
+    };
+    
+    callback(
+        function(i){
+        console.log(i+1+"번째 함수 호출");
+        console.log('${i} 번째 함수 호출==>');
+        }
+    );
+*/
+   const arr=[30,20,10,50,40];
+   console.log(arr);
+   
+   //익명함수
+   function f(x,y){
+    let min=arr[0];
+    for(const i of arr){
+        if(min> i){
+            min=i;
+        }
+    }
+    return min;
+    
+    
+   };
+
+   console.log(f(3,6)) 
+
+   
+   
+   
+   /*
+    let useremail=prompt("이메일 입력");
+    reg3=/^\w{5,12}@[a-z]{2,10}[\.][a-z]{2,3}[\.]?[a-z]/;
+    while(true){
+        if(reg3.test(useremail))break;
+        alert("이메일을 다시 입력하시오");
+        useremail=prompt("이메일을 입력하세요");
+    }
+*/
+
+
+   // let username=prompt("너의 이름은?");
+    //reg=/^[가-힣]{2,5}$/;
+    /*while(true){
+        if(reg.test(username))break;
+        alert("형식을 맞추어서 입력하시오");
+        username = prompt("잘하자");
+    }*/
+
+
+    //let str="html css jequery";
+    //let reg1 = /css/i;
+    //var reg1 =new RegExp("css");
+    //let result1= reg1.test(str);
+    //document.write(result1,"<br>");
+
+    /*let userphone=prompt("핸드폰 번호 입력");
+    reg2=/^(010|013|011)\d{3,4}\d{4}$/;
+    while(true){
+        if(reg2.test(userphone))break;
+        alert("이거 말고 다른거");
+        userphone=prompt("번호 입력해라")
+    }
+    document.write(userphone);*/
+  /*  function car(){
+        let basic_car=Number(document.getElementById("total").defaultvalue);
+        for(let i=1; i<4; i++){
+            let eleobj=document.getElementById("opt"+i);
+            if(eleobj.checked){
+                basic_car+=Number(eleobj.value);
+            }
+        }
+        document.getElementById("total").value=basic_car;
+    };
+*/
+    /*
+    document.f1.onusbmit=function(e){
+        let pw1 = document.f1.user_pw1;
+        let pw2 = document.f1.user_pw2;
+        console.log("f1-----------");
+        pw2.value= pw1.value;
+        pw2.disabled= true;
+    }
+    document.f2.allchk.onclick = function(){
+        if(this.check){
+            document.f2.subject1.checked=true;
+            document.f2.subject2.checked=true;
+            document.f2.subject3.checked=true;
+        }else{
+            document.f2.subject1.checked=false;
+            document.f2.subject2.checked=false;
+            document.f2.subject3.checked=false;
+        }
+    };
+    document.f2.onsubmit = function(){
+        let act = document.f2.accept;
+
+        if(act.checked==false){
+            alert("약관 동의해라!");
+            act.focus();
+            return false;
+        }
+    }*/
+    /*
+    document.getElementById("selector").style.color="red";
+
+
+    let addnum=0;
+    let subnem=1000;
+    let auto_1=setInterval(function(){
+        addnum++;
+        console.log("addnum : "+addnum);
+    },3000);
+
+    let auto_2=setInterval(function(){
+        subnem++;
+        console.log("subnum : "+subnem);
+    },3000);
+
+*/
+
+    /*myfun();
+    document.getElementById("my").innerHTML=typeof chair;
+
+    function myfun(){
+        var chair ="의자";
+        console.log(chair);
+    }*/
+    
+
+    
+
+    /*
+        document.write("hello js");
+
+        var num=10;
+        document.write(typeof(num));
+
+        var id="ezan";
+        var pw ="1234";
+
+        var user_id=prompt("아이디를 입력하세요");
+        var user_pw=prompt("비밀번호를  입력하세요");
+
+        if(id==user_id){
+            if(pw=user_pw){
+                document.write(user_id+"님 안녕하세요");
+            }else{
+                alert("비밀번호 틀린");
+                location.reload();
+            }
+        }else{
+            alert("아이디 틀린");
+            location.reload();
+        }
+
+        let result = confirm("회원 탈퇴 하시겠습니까?");
+
+        if(result){
+            document.write("탈퇴처리");
+        }else{
+            document.write("탈퇴 취소");
+        }*/
+    </script>
+</body>
+</html>

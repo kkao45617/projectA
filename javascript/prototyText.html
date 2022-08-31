@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>탐색 선택자</h1>
+    <h2 id="tit">선택자</h2>
+    <h3>직접선택자</h3>
+    <button>click me </button>
+    <p>콜백함수 테스트중</p>
+
+    <ul id="menu">
+        <li>내용1</li>
+        <li>내용2</li>
+        <li>내용3</li>
+        <li>내용4</li>
+        <li>내용5</li>
+    </ul>
+    <ul id="menu2">
+        <li>내용1</li>
+        <li>내용2</li>
+        <li>내용3</li>
+        <li>내용4</li>
+        <li>내용5</li>
+    </ul>
+    <div id="sec">
+        <h2>텍스트</h2>
+    </div>
+    
+    <div id="sec2">
+        <img src="images/ddd.png" alt="가위" border="2">
+    </div>
+
+    <script>
+        $(function(){
+            var result= $("$menu").html();
+            document.write(result);
+
+            var result2= $("$menu").html("aaa");
+            document.write(result2);
+
+            var result3= $("#sec").text();
+            document.write(result3);
+
+            $("#id").val();
+            
+            var result4 = $("#sec2").attr("src");
+            console.log(result4);
+        })
+/*
+        $(function(){
+            var obj=[
+                {"area":"서울"},
+                {"area":"대구"},
+                {"area":"광주"},
+                {"area":"부산"}
+        ]
+       
+        $(obj).each(function(i,o){
+            console.log(i+":"+o);
+        });
+
+        $.each($("#menu li"),function(i,o){
+            console.log(i+":"+o);
+        });
+    })*/
+        /*
+        $(document).ready(function(){
+            $("#menu li").eq(2).css("background","red");
+            $("#menu li:odd").it(3).css("background","blue")
+            /*
+            $("#menu li:first").css("background","red");
+            $("#menu li:last").css("background","blue");    
+       
+        });
+
+
+        $(document).ready(function(){
+            $("#tit,h3").css("background-color","red").css("border","4px solid #ff0");
+        });
+        */
+        /*
+        $(document).ready(function(){
+            $("button").click(function(){
+                $("p").hide("slow",myfun);
+            });
+            function myfun(){
+                alert("콜백함수!!!!");
+            }
+        });
+        */
+    </script>
+</body>
+</html>

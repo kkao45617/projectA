@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trip.mapper.FesDataMapper">
+
+	<sql id="getAddressListsql">
+		<trim prefix="or (" suffix=")">
+			<foreach collection="cityArr" item="city" separator="or">
+				<if test="city != null">
+					address like '%'|| #{city} ||'%'
+				</if>
+			</foreach>
+		</trim>
+	</sql>
+	<sql id="cityTotalsql">
+		<trim prefix="(" suffix=") and">
+			<if test="address != null">
+				address like '%'|| #{address} ||'%'
+			</if>
+			<if test="city != null">
+				or
+			</if>
+			<foreach collection="cityArr" item="city" separator="or">
+				<if test="city != null">
+					address like '%'|| #{city} ||'%'
+				</if>
+			</foreach>
+		</trim>
+	</sql>
+
+<insert id="insert">
+      insert into festivaldata(num, title, address, firstimg, startdate, enddate, mapx, mapy, mlevel)
+      values(fesdata_num.nextval,
+      #{title}, #{address}, #{firstimg}, #{startdate}, #{enddate}, #{mapx}, #{mapy}, #{mlevel})
+   </insert>
+   
+<!-- 전체 데이터 출력 -->
+	<select id="getList" resultType="com.trip.domain.FesDataDTO">
+		select * from festivaldata where num>0
+	</select>
+	
+<!-- 지역 누르면 sort -->	
+	<select id="getAddressList" resultType="com.trip.domain.FesDataDTO">
+ 		<![CDATA[
+			select num, title, address, firstimg, startdate, enddate, mapx,
+			mapy, mlevel
+		from(
+			select /*+ INDEX(festivaldata indexNum)*/
+			rownum rn, num, title, address, firstimg, startdate, enddate, mapx,
+			mapy, mlevel
+			from festivaldata
+		where 
+		(address like '%'|| #{address} ||'%'
+		]]>
+		<include refid="getAddressListsql"></include>
+		<![CDATA[
+		) and ROWNUM <= #{pageNum}*#{amount})
+		where
+		rn > (#{pageNum}-1)*#{amount}
+		
+		]]>	
+	</select>
+	
+	
+	<select id="selectOne" parameterType="Integer" resultType="com.trip.domain.FesDataDTO">
+      select * from festivaldata where num=#{num}
+   </select>
+   
+   <select id="read" resultType="com.trip.domain.FesDataDTO">
+      select * from festivaldata
+      where #{num} 
+      order by num desc
+   </select>
+	
+
+	
+	  <select id="getListWithPagging" resultType="com.trip.domain.FesDataDTO">
+      <![CDATA[
+         select num, title, address, firstimg, startdate, enddate, mapx, mapy, mlevel
+      from(
+         select
+         rownum rn, num, title, address, firstimg, startdate, enddate, mapx, mapy, mlevel
+         from festivaldata
+         where ROWNUM <= #{pageNum}*#{amount}
+      )
+      where
+      ]]>
+      
+        <include refid="criterial"></include>
+      
+      <![CDATA[
+      rn > (#{pageNum}-1)*#{amount}
+      ]]>
+   </select>
+   
+   <select id="getTotalCount" resultType="int">
+    select count(*) from festivaldata where
+    	<include refid="cityTotalsql"></include>
+   	num>0
+   </select>
+   
+	<sql id="criterial">
+      <trim prefix="(" suffix=") and">
+         <foreach collection="typeArr" item="type" separator="or">
+            <if test="type=='T'.toString()">
+               Title like '%'|| #{keyword} ||'%'
+            </if>
+            <if test="type=='P'.toString()">
+               Address like '%'|| #{keyword} ||'%'
+            </if>
+           
+         </foreach>
+      </trim>
+	</sql>
+	
+</mapper>
